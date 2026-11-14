@@ -7,7 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: unzip -q Vania_bot_radio.zip
+      - name: Unzip project
+        run: |
+          ls -la
+          Z=$(ls *.zip | head -n 1)
+          echo "Using: $Z"
+          unzip -q "$Z"
+          ls -la
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: "17" }
       - uses: actions/setup-python@v5
